@@ -13,7 +13,7 @@
     "dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "test": "jest",
-    "test:watch": "jest --watchAll --coverage",
+    "test:watch": "jest --watchAll",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },

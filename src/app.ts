@@ -1,9 +1,9 @@
 import { program } from 'commander'
 import chalk from 'chalk'
 
-import { Scrapper } from './scrapper'
+import { HackerNewsScrapper } from './HackerNewScraper'
 
-const main = async (): Promise<any> => {
+const fetchHackerNewPosts = async (): Promise<void> => {
   program
     .version('0.1.0', '-v, --version')
     .option('-p, --posts <posts>', 'Number of valid posts to extract')
@@ -17,7 +17,7 @@ const main = async (): Promise<any> => {
   // }
 
   try {
-    const scrapper = new Scrapper('https://news.ycombinator.com')
+    const scrapper = new HackerNewsScrapper('https://news.ycombinator.com')
     const topPosts = await scrapper.getTopPosts(1)
     console.log(topPosts)
   } catch (err) {
@@ -25,4 +25,4 @@ const main = async (): Promise<any> => {
   }
 }
 
-main()
+fetchHackerNewPosts()

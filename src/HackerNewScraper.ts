@@ -12,7 +12,7 @@ export interface Post {
   numberOfComments: number
 }
 
-export class Scrapper {
+export class HackerNewsScrapper {
   URL: string
 
   constructor(URL: string) {
@@ -21,7 +21,7 @@ export class Scrapper {
 
   /**
    * retrieve top n number of posts from hackernews
-   * @param {number} numberOfPosts
+   * @param {number} numberOfPosts number posts want to retrieve
    * @return {Post[]}
    */
   async getTopPosts(numberOfPosts: number = 10): Promise<Post[]> {
@@ -78,10 +78,11 @@ export class Scrapper {
   }
 
   /**
-   *
-   * @param html
+   * validate the post
+   * @param {Post} post post properties
+   * @return {boolean}
    */
-  isValidPost({
+  _isValidPost({
     title,
     author,
     uri,
@@ -133,7 +134,7 @@ export class Scrapper {
         ),
       }
 
-      if (this.isValidPost(post)) {
+      if (this._isValidPost(post)) {
         parsedPosts.push(post)
       }
     }
